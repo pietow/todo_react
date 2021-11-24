@@ -20,9 +20,9 @@ class InputField extends React.Component {
 
     render() {
         return (
-            <div>
-                <input onChange={this.inputHandler} value={this.state.input} />
-                <button onClick={this.clickHandler}>Add</button>
+            <div className=" ">
+                <input className="border-2 rounded mr-4 mt-3" onChange={this.inputHandler} value={this.state.input} />
+                <button className="text-gray-200 bg-purple-600 bg-opacity-75 rounded text-sm p-1" onClick={this.clickHandler}>Add</button>
             </div>
         )
     }
@@ -36,9 +36,9 @@ class TodoList extends React.Component {
 
     render() {
         this.listItems = this.props.list.map((x, index) => (
-            <div key={index.toString()}>
-                <li>{x}</li>
-                <button onClick={() => this.props.onDone(index)}>Done</button>
+            <div className="flex mt-2 justify-between" key={index.toString()}>
+                <li className="pr-4">{x}</li>
+                <button className="text-gray-200 bg-purple-600 bg-opacity-75 rounded p-1" onClick={() => this.props.onDone(index)}>Done</button>
             </div>
         ))
         return <ul>{this.listItems}</ul>
@@ -70,8 +70,8 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>You have {this.state.list.length}</h1>
+            <div className="flex flex-col items-start mt-10 ml-32">
+                <h1 className="text-xl mb-3">You have {this.state.list.length} {this.state.list.length > 1 ? 'tasks' : 'task'}</h1>
                 <TodoList list={this.state.list} onDone={this.deleteItem}></TodoList>
                 <InputField onAddToList={this.addItem}></InputField>
             </div>
