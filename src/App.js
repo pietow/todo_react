@@ -49,18 +49,20 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: [],
+            list:  localStorage.list ? localStorage.list.split(',') : []
         }
     }
 
     addItem = str => {
         this.setState(state => {
+            localStorage.list = [...state.list, str]
             return { list: [...state.list, str] }
         })
     }
 
     deleteItem = num => {
         this.setState(state => {
+            localStorage.list = [...state.list.slice(0,num), ...state.list.slice(num+1)]
             return ({
             list:[...state.list.slice(0,num), ...state.list.slice(num+1)]
         })})
